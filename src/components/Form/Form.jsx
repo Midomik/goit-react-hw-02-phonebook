@@ -3,6 +3,7 @@ import css from './Form.module.css';
 
 export class Form extends Component {
   state = { name: '', number: '' };
+
   hendlerSubmit = e => {
     e.preventDefault();
     this.props.addToContact({
@@ -10,10 +11,17 @@ export class Form extends Component {
       number: this.state.number,
     });
     console.log(this.state);
+    e.currentTarget.elements.name.value = '';
+    e.currentTarget.elements.number.value = '';
+    // this.reset(); doesn't work 🤷‍♂️
   };
   handleChangeInput = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
+  };
+
+  reset = () => {
+    this.setState({ number: '', name: '' });
   };
 
   render() {
@@ -39,7 +47,9 @@ export class Form extends Component {
             required
           />
         </label>
-        <button className={css.sub_btn} type="submit">Add to contact</button>
+        <button className={css.sub_btn} type="submit">
+          Add to contact
+        </button>
       </form>
     );
   }

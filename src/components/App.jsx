@@ -50,9 +50,11 @@ export class App extends Component {
     return (
       <div className={css.main_container}>
         <Form addToContact={this.addToContact} />
-        <SearchContact filterContact={this.filterContact} />
+        <SearchContact
+          value={this.state.filter}
+          filterContact={this.filterContact}
+        />
         <ContactList
-          key={this.state.id}
           contacts={this.visibleContacts()}
           removeItem={this.removeItem}
         />

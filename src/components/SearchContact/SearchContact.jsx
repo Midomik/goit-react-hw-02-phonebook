@@ -13,6 +13,7 @@ export class SearchContact extends Component {
           onChange={this.findContatct}
           type="text"
           name="search"
+          value={this.props.value}
         />
       </div>
     );
